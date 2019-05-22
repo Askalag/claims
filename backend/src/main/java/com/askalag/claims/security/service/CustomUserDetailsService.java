@@ -1,7 +1,7 @@
-package com.askalag.claims.service;
+package com.askalag.claims.security.service;
 
-import com.askalag.claims.security.CustomUserDetails;
 import com.askalag.claims.repository.UserRepository;
+import com.askalag.claims.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
