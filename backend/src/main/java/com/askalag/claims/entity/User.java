@@ -1,7 +1,9 @@
 package com.askalag.claims.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Table(name = "users")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -17,6 +20,7 @@ public class User {
     private Long id;
 
     private String username;
+    @JsonIgnore
     private String password;
 
     @ManyToMany
