@@ -2,7 +2,6 @@ package com.askalag.claims.service;
 
 import com.askalag.claims.entity.User;
 import com.askalag.claims.repository.UserRepository;
-import com.askalag.claims.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
