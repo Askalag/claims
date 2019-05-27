@@ -5,6 +5,8 @@ import com.askalag.claims.security.JwtAuthProvider;
 import com.askalag.claims.security.model.JwtResponse;
 import com.askalag.claims.security.model.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,20 +16,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    @Autowired
-    AuthenticationManager authenticationManager;
 
-    @Autowired
-    JwtAuthProvider jwtAuthProvider;
-
-    public JwtResponse login(LoginForm form) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(form.getUsername(), form.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwtToken = jwtAuthProvider.generateJwtToken(authentication);
-        CustomUserDetails userDetails = (CustomUserDetails)authentication.getPrincipal();
-
-        return new JwtResponse(jwtToken, userDetails.getUsername(), userDetails.getAuthorities());
-    }
 }
