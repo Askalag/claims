@@ -1,15 +1,13 @@
-package com.askalag.claims.security.service;
+package com.askalag.claims.service;
 
 import com.askalag.claims.entity.Role;
 import com.askalag.claims.entity.User;
-import com.askalag.claims.security.CustomUserDetails;
-import com.askalag.claims.security.JwtAuthProvider;
-import com.askalag.claims.security.model.JwtResponse;
-import com.askalag.claims.security.model.LoginForm;
-import com.askalag.claims.security.model.RegisterForm;
-import com.askalag.claims.security.model.ResponseMessage;
-import com.askalag.claims.service.RoleService;
-import com.askalag.claims.service.UserService;
+import com.askalag.claims.security.UserDetailsImpl;
+import com.askalag.claims.security.JwtAuthTokenProvider;
+import com.askalag.claims.model.JwtResponse;
+import com.askalag.claims.model.LoginForm;
+import com.askalag.claims.model.RegisterForm;
+import com.askalag.claims.model.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +27,7 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
-    JwtAuthProvider jwtAuthProvider;
+    JwtAuthTokenProvider jwtAuthTokenProvider;
     @Autowired
     private UserService userService;
     @Autowired
@@ -42,8 +40,8 @@ public class AuthServiceImpl implements AuthService {
                 new UsernamePasswordAuthenticationToken(form.getUsername(), form.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwtToken = jwtAuthProvider.generateJwtToken(authentication);
-        CustomUserDetails userDetails = (CustomUserDetails)authentication.getPrincipal();
+        String jwtToken = jwtAuthTokenProvider.generateJwtToken(authentication);
+        UserDetailsImpl userDetails = (UserDetailsImpl)authentication.getPrincipal();
 
         return new ResponseEntity<>(new JwtResponse(jwtToken, userDetails.getUsername(), userDetails.getAuthorities()), HttpStatus.OK);
     }

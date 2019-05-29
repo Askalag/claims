@@ -1,10 +1,10 @@
 package com.askalag.claims.controller;
 
-import com.askalag.claims.security.model.LoginForm;
-import com.askalag.claims.security.model.RegisterForm;
-import com.askalag.claims.security.service.AuthService;
-import com.askalag.claims.security.service.LoginService;
-import com.askalag.claims.security.service.RegisterService;
+import com.askalag.claims.model.LoginForm;
+import com.askalag.claims.model.RegisterForm;
+import com.askalag.claims.service.AuthService;
+import com.askalag.claims.service.LoginService;
+import com.askalag.claims.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

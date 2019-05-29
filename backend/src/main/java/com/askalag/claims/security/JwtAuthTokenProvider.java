@@ -12,9 +12,9 @@ import java.util.Date;
 
 @Component
 @PropertySource("classpath:jwtToken.properties")
-public class JwtAuthProvider {
+public class JwtAuthTokenProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtAuthTokenProvider.class);
     @Value("${jwt.token.expiration.minutes}")
     private int tokenExpiration;
     @Value("${jwt.token.secret}")
@@ -22,7 +22,7 @@ public class JwtAuthProvider {
 
     public String generateJwtToken(Authentication authentication) {
 
-        CustomUserDetails userDetails = (CustomUserDetails)authentication.getPrincipal();
+        UserDetailsImpl userDetails = (UserDetailsImpl)authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())

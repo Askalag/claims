@@ -1,4 +1,4 @@
-package com.askalag.claims.security.model;
+package com.askalag.claims.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

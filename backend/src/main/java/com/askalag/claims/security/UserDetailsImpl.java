@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomUserDetails implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static CustomUserDetails build(User user) {
+    public static UserDetailsImpl build(User user) {
         List<GrantedAuthority> authorities = user
                 .getRoles()
                 .stream()
@@ -29,7 +29,7 @@ public class CustomUserDetails implements UserDetails {
                         new SimpleGrantedAuthority(role.getName())
                 )
                 .collect(Collectors.toList());
-        return new CustomUserDetails(user.getUsername(), user.getPassword(), authorities);
+        return new UserDetailsImpl(user.getUsername(), user.getPassword(), authorities);
     }
 
     @Override

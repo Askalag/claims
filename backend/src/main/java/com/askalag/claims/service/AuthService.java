@@ -1,7 +1,7 @@
-package com.askalag.claims.security.service;
+package com.askalag.claims.service;
 
-import com.askalag.claims.security.model.LoginForm;
-import com.askalag.claims.security.model.RegisterForm;
+import com.askalag.claims.model.LoginForm;
+import com.askalag.claims.model.RegisterForm;
 import org.springframework.http.ResponseEntity;
 
 public interface AuthService {

@@ -1,4 +1,4 @@
-package com.askalag.claims.security.model;
+package com.askalag.claims.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
